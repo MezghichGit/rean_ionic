@@ -43,6 +43,7 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
 
 const ProductsScreen = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
+  
   const monItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
     const color = item.id === selectedId ? 'white' : 'black';

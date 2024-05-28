@@ -1,8 +1,10 @@
 import {View,Text } from 'react-native';
-const DetailsProductScreen = () => {
+const DetailsProductScreen = ({ navigation, route }) => {
     return (
     <View>
-    <Text>Détails Produit</Text>
+    <Text>Titre: {route.params.produit.title}</Text>
+    <Text>Prix: {route.params.produit.prix}</Text>
+    <Text>Ingrédients{route.params.produit.ingredients}</Text>
     </View>
     )
   };

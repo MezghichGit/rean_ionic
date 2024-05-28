@@ -22,12 +22,20 @@ function AccueilScreen() {
      })
    }*/
   const getData = async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    const data = await response.json();
-    setUsers(data);
-    setTimeout(() => {
-      setIsLoading(false);
-  }, 1000);
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const data = await response.json();
+      setUsers(data);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    } catch (error) {
+      console.log("Erreur dans lapi : "+error)
+    }
+    finally{
+      setIsLoading(false)
+    }
+
   }
 
 

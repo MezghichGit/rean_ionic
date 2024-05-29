@@ -9,34 +9,34 @@ import {
 import axios from "axios";
 import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 
-const HomeScreen = () => {
-    const [providers, setProviders] = useState([]);
-    const fetchProviders = async () => {
+const ArticleScreen = () => {
+    const [articles, setArticles] = useState([]);
+    const fetchArticles = async () => {
         const u = await asyncStorage.getItem("token");
         axios.defaults.headers['Authorization'] = 'Bearer ' + u;
         const a = await asyncStorage.getItem("id");
+
         const res = await axios
-            .get("https://ams.smart-it-partner.com/api/providers")
+            .get("https://ams.smart-it-partner.com/api/articles")
             .then(response => response.data["hydra:member"])
-        setProviders(res);
-        //console.log(res)
+        setArticles(res);
+
     }
     useEffect(() => {
-        fetchProviders();
+        fetchArticles();
     }, []);
     return (
         <FlatList
             enableEmptySections={true}
-            data={providers}
+            data={articles}
             keyExtractor={item => item.id}
             renderItem={({ item }) => {
                 return (
                     <View style={styles.box}>
-                        <Image style={styles.image} source={{ uri: 'https://ams.smart-it-partner.com/uploads/provider/' + item.photo }} />
+                        <Image style={styles.image} source={{ uri: 'https://ams.smart-it-partner.com/uploads/article/' + item.photo }} />
                         <View style={styles.boxContent}>
                             <Text style={styles.title}>{item.name}</Text>
-                            <Text style={styles.description}>{item.adress}</Text>
-                            <Text style={styles.description}>{item.email}</Text>
+                            <Text style={styles.description}>{item.prix}</Text>
                         </View>
                     </View>
                 )
@@ -44,6 +44,7 @@ const HomeScreen = () => {
         />
     )
 }
+
 const styles = StyleSheet.create({
     image: {
         width: 100,
@@ -74,4 +75,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
     },
 })
-export default HomeScreen;
+export default ArticleScreen;

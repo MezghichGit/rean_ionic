@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {Text, View, Image, FlatList } from 'react-native'
 import styles from '../styles/style';
 import axios from "axios";
 import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+
 const ArticleScreen = () => {
    
    // const navigation=useNavigation();
@@ -12,6 +13,14 @@ const ArticleScreen = () => {
     useEffect(() => {
         fetchArticles();
     }, []);
+
+
+    useFocusEffect(
+        useCallback( ()  => {
+          const interval = setInterval( async () => {fetchArticles();}, 1000); 
+          return () => clearInterval(interval);
+        }, [])
+      );
 
     const fetchArticles = async () => {
         const u = await asyncStorage.getItem("token");

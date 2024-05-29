@@ -1,16 +1,49 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
+import { jwtDecode } from "jwt-decode";
+import authtoken from '../service/authtoken';
+
 
 const SignInScreen = props => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    //const [username, setUsername] = useState("");
+    //const [password, setPassword] = useState("");
 
-    const navigation=useNavigation();
-    const  onSignUpPressed= () =>{
-      navigation.navigate('Register')
+    const [username, setUsername] = useState('amine.mezghich@ensi-uma.tn');
+    const [password, setPassword] = useState('123456');
+
+    const navigation = useNavigation();
+    const onSignUpPressed = () => {
+        navigation.navigate('Register')
     }
-  
+
+
+    let newUser = {
+        username: username,
+        password: password,
+    }
+
+
+    const [error, setError] = useState("");
+    const handleSubmit = async event => {
+
+        try {
+            await authtoken.authentificate(newUser);
+            setError("");
+            const token = await asyncStorage.getItem("token");
+            const jwtdata = jwtDecode(token);
+            await asyncStorage.setItem("email", jwtdata.email);
+            await asyncStorage.setItem("id", JSON.stringify(jwtdata.id));
+            navigation.navigate('Home');
+        }
+        catch (error) {
+
+
+            setError("invalid");
+        }
+    }
+
     return (
         <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -44,6 +77,7 @@ const SignInScreen = props => {
                         <TextInput
                             style={styles.input}
                             onChangeText={setUsername}
+                            value={username}
                         />
                         <View style={styles.spacing}></View>
                         <View style={styles.label}>
@@ -53,11 +87,12 @@ const SignInScreen = props => {
                             <TextInput
                                 style={styles.passwordInput}
                                 onChangeText={setPassword}
+                                value={password}
                                 secureTextEntry
                             />
                         </View>
                         <View style={styles.spacing}></View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={handleSubmit}>
                             <View
                                 style={{
                                     margin: 10,

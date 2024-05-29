@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 const SignInScreen = props => {
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("")
-    const [username, setUsername] = useState('');
     return (
         <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -18,9 +18,6 @@ const SignInScreen = props => {
                                 alignItems: 'center', marginTop: 100
                             }}>
                             <Image
-                                style={{
-                                    width: '100%', height: 120
-                                }}
                                 source={require('../assets/sip.png')} />
                         </View>
                     </View>
@@ -38,9 +35,7 @@ const SignInScreen = props => {
                         </View>
                         <TextInput
                             style={styles.input}
-                            setValue={setUsername}
                             onChangeText={setUsername}
-                            value={username}
                         />
                         <View style={styles.spacing}></View>
                         <View style={styles.label}>
@@ -49,13 +44,12 @@ const SignInScreen = props => {
                         <View style={styles.passwordInputContainer}>
                             <TextInput
                                 style={styles.passwordInput}
-                                value={password}
                                 onChangeText={setPassword}
                                 secureTextEntry
                             />
                         </View>
                         <View style={styles.spacing}></View>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={()=>console.log(username+":"+password)}>
                             <View
                                 style={{
                                     margin: 10,

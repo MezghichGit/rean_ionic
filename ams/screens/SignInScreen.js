@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 const SignInScreen = props => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("")
+    const [password, setPassword] = useState("");
+
+    const navigation=useNavigation();
+    const  onSignUpPressed= () =>{
+      navigation.navigate('Register')
+    }
+  
     return (
         <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -49,7 +57,7 @@ const SignInScreen = props => {
                             />
                         </View>
                         <View style={styles.spacing}></View>
-                        <TouchableOpacity onPress={()=>console.log(username+":"+password)}>
+                        <TouchableOpacity>
                             <View
                                 style={{
                                     margin: 10,
@@ -64,6 +72,23 @@ const SignInScreen = props => {
                                         color: 'white',
                                         fontSize: 20
                                     }}>Connexion </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={onSignUpPressed}>
+                            <View
+                                style={{
+                                    margin: 10,
+                                    backgroundColor: 'white',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: 100,
+                                    paddingVertical: 10,
+                                }}>
+                                <Text
+                                    style={{
+                                        color: '#07B0A8',
+                                        fontSize: 20
+                                    }}>S'inscrire </Text>
                             </View>
                         </TouchableOpacity>
                     </View>

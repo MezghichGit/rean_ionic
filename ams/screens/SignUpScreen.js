@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 const SignUpScreen = props => {
 
     const [nom, setNom] = useState("");
     const [prenom, setPrenom] = useState("");
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("");
+
+    const navigation=useNavigation();
+    const  onSignInPressed= () =>{
+      navigation.navigate('Login')
+    }
+
     return (
         <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -69,7 +77,7 @@ const SignUpScreen = props => {
                             />
                         </View>
                         <View style={styles.spacing}></View>
-                        <TouchableOpacity onPress={()=>console.log(prenom+":"+nom+":"+username+":"+password)}>
+                        <TouchableOpacity>
                             <View
                                 style={{
                                     margin: 10,
@@ -84,6 +92,23 @@ const SignUpScreen = props => {
                                         color: 'white',
                                         fontSize: 20
                                     }}>S'inscrire </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={onSignInPressed}>
+                            <View
+                                style={{
+                                    margin: 10,
+                                    backgroundColor: 'white',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: 100,
+                                    paddingVertical: 10,
+                                }}>
+                                <Text
+                                    style={{
+                                        color: '#07B0A8',
+                                        fontSize: 20
+                                    }}>Login</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

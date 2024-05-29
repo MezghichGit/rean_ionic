@@ -1,15 +1,43 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from "axios";
+import {jwtDecode} from "jwt-decode";
+import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 
 const SignUpScreen = props => {
 
-    const [nom, setNom] = useState("");
-    const [prenom, setPrenom] = useState("");
-    const [password, setPassword] = useState("")
-    const [username, setUsername] = useState("");
-
+    const [nom, setNom] = useState("Mezghich");
+    const [prenom, setPrenom] = useState("Mohamed Amine");
+    const [password, setPassword] = useState("123456789")
+    const [username, setUsername] = useState("amine.mezghich@gmail.com");
+    const [telephone, setTelephone] = useState("2030405060");
+    const [adresse, setAdresse] = useState("France, Paris");
     const navigation=useNavigation();
+
+    const addUserData = async () => {
+        const formData = new FormData();
+        if (nom.trim() === ''&& prenom.trim() === '' && password.trim() === '' && email.trim() === '') {
+            Alert.alert('Erreur', 'Une erreur est survenue lors de l\'inscription');
+            return;
+        }
+        formData.append('password', password);
+        formData.append('email', username);
+        formData.append('nom', nom);
+        formData.append('prenom', prenom);
+        formData.append('telephone', telephone);
+        formData.append('adresse', adresse);
+        try {
+            const response = await axios.post("https://ams.smart-it-partner.com/register/mobile", formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+            alert('Votre compte a été crée avec succès!');
+            navigation.navigate('Login');
+        } catch (error) {
+            Alert.alert('Erreur', 'Une erreur est survenue lors de l\'inscription', error);
+        }
+    };
+
     const  onSignInPressed= () =>{
       navigation.navigate('Login')
     }
@@ -47,6 +75,7 @@ const SignUpScreen = props => {
                         <TextInput
                             style={styles.input}
                             onChangeText={setNom}
+                            value={nom}
                         />
                         <View style={styles.spacing_big}></View>
                         <View style={styles.label}>
@@ -55,7 +84,29 @@ const SignUpScreen = props => {
                         <TextInput
                             style={styles.input}
                             onChangeText={setPrenom}
+                            value={prenom}
                         />
+
+                        <View style={styles.spacing_big}></View>
+                        <View style={styles.label}>
+                            <Text style={styles.label}>Téléphone</Text>
+                        </View>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setTelephone}
+                            value={telephone}
+                        />
+                        
+                        <View style={styles.spacing_big}></View>
+                        <View style={styles.label}>
+                            <Text style={styles.label}>Adresse</Text>
+                        </View>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setAdresse}
+                            value={adresse}
+                        />
+
                         <View style={styles.spacing_big}></View>
 
                         <View style={styles.label}>
@@ -64,6 +115,7 @@ const SignUpScreen = props => {
                         <TextInput
                             style={styles.input}
                             onChangeText={setUsername}
+                            value={username}
                         />
                         <View style={styles.spacing}></View>
                         <View style={styles.label}>
@@ -74,10 +126,11 @@ const SignUpScreen = props => {
                                 style={styles.passwordInput}
                                 onChangeText={setPassword}
                                 secureTextEntry
+                                value={password}
                             />
                         </View>
                         <View style={styles.spacing}></View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={addUserData}>
                             <View
                                 style={{
                                     margin: 10,

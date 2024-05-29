@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
+import ArticleScreen from '../screens/ArticleScreen';
+import NewsScreen from '../screens/NewsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const tab = createBottomTabNavigator();
@@ -12,7 +14,8 @@ export default function TabNavigator() {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
                     if (route.name == "Providers") { iconName = "home-outline"; }
-
+                    if (route.name == "Articles") { iconName = "phone-portrait-outline"; }
+                    if (route.name == "News") { iconName = "newspaper-outline"; }
                     return (
                         <Ionicons
                             name={iconName}
@@ -24,8 +27,8 @@ export default function TabNavigator() {
             })}>
 
             <tab.Screen name="Providers" component={HomeScreen} options={{ title: 'Providers' }} />
-            <tab.Screen name="Home1" component={HomeScreen} options={{ title: 'Providers' }} />
-            <tab.Screen name="Home2" component={HomeScreen} options={{ title: 'Providers' }} />
+            <tab.Screen name="Articles" component={ArticleScreen} options={{ title: 'ArticleS' }} />
+            <tab.Screen name="News" component={NewsScreen} options={{ title: 'News' }} />
         </tab.Navigator>
 
     );

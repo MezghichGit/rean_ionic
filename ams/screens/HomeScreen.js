@@ -6,6 +6,7 @@ import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncSto
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const HomeScreen = () => {
+    const navigation=useNavigation();
     const [providers, setProviders] = useState([]);
     const fetchProviders = async () => {
         const u = await asyncStorage.getItem("token");
@@ -28,10 +29,10 @@ const HomeScreen = () => {
         }, [])
     );
 
-    const addProvider = () => {
+    /*const addProvider = () => {
         console.log('Ajouter un provider');
-    };
-
+    };*/
+    const addProvider = () => { navigation.navigate('AddProvider'); };
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.addButton} onPress={addProvider}>

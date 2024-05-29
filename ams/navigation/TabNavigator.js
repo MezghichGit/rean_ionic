@@ -5,8 +5,31 @@ import HomeScreen from '../screens/HomeScreen';
 import ArticleScreen from '../screens/ArticleScreen';
 import NewsScreen from '../screens/NewsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AddProviderScreen from '../screens/AddProviderScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+
+const HomeStack = () => (
+    <Stack.Navigator>
+        <Stack.Screen name="ListProviders" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen
+            name="AddProvider"
+            component={AddProviderScreen}
+            options={({ route }) => ({
+                title: route.params?.title,
+                headerStyle: {
+                    backgroundColor: '#DFF8F7',
+                }
+            })}
+        />
+    </Stack.Navigator>
+);
+
+
+
 export default function TabNavigator() {
     return (
         <tab.Navigator
@@ -26,7 +49,7 @@ export default function TabNavigator() {
                 },
             })}>
 
-            <tab.Screen name="Providers" component={HomeScreen} options={{ title: 'Providers' }} />
+            <tab.Screen name="Providers" component={HomeStack} options={{ title: 'Providers' }} />
             <tab.Screen name="Articles" component={ArticleScreen} options={{ title: 'ArticleS' }} />
             <tab.Screen name="News" component={NewsScreen} options={{ title: 'News' }} />
         </tab.Navigator>

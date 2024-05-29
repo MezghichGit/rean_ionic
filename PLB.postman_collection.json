@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "0d60931e-45df-4d07-b0ca-c2ab18532aa4",
+		"name": "PLB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllProviders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDMxNDkwNTUsImV4cCI6MTcwMzE1MjY1NSwicm9sZXMiOlsiUk9MRV9BR0VOVCIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFtaW5lLm1lemdoaWNoQGdtYWlsLmNvbSIsImlkIjo5LCJlbWFpbCI6ImFtaW5lLm1lemdoaWNoQGdtYWlsLmNvbSJ9.eEzT-lVHj-2XdwJS1XQevxgO0wNOEAETfzDZExWl3Ro0vpjbpGbwOfjIdITxaPcet8UD7IAR7ELIdTG1LMLMrUe4AOcfRHmqBANeyEpo8YQKHuRHh_grlQM9EQvyUXVoJSAVdbwMGey4mKPiqLd7m9iLvU_Law9Prxij6rgxc16fB9QLZi0V5jq5hk561m5-EHKP8wXWvHernj3FdnTqxIX4p3AbD3iegUlq6uoHl_Mv2n93IDZN5_SpbeP-oUwz6vfsrb35doFI-YiwNRP7eR6VWAXsSZkQKJX-to-yRkTXq_529_BPbMXvyFS0mjGOFMAGxcZw7hdAfkGo2ogpXQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/providers",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"amine.mezghich@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/login_check",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProvider",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"test\",\r\n    \"adress\":\"france\",\r\n    \"email\":\"test@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/providers",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddNews",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDMxNjQ5MjQsImV4cCI6MTcwMzE2ODUyNCwicm9sZXMiOlsiUk9MRV9BR0VOVCIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFtaW5lLm1lemdoaWNoQGdtYWlsLmNvbSIsImlkIjoxNSwiZW1haWwiOiJhbWluZS5tZXpnaGljaEBnbWFpbC5jb20ifQ.HzYRhjXEoIEK-1bNw9_io0pOglZMX6H7fNZSPs19Yt7at85w5ns7smafGWTwfJ9SVBdgBdGFGeAu--C09syJBNtP5CnAoPkM9I--U-2X-QH7TTKqpC8Q1P0FRs8KfaiJsfXjPi73vCpLx1d5i_FRMngWR1Wqmes6H8zm7draOSMYcUKaZRvSGPyUO3H_1FW2vQbYPMnAFFQQpP_lKrDf7FXNseRijwk6Umulp7WcyCwPbkVuDMzIIMM122SpXKEn2KjZivwW2nsm7uFkjtGxp-MhelQbN1fQt4aaTuHpd-30kW8ObqCvXu0lnXB1K62Cs0akrZXWuUVgIcYCO0MEeg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"description\": \"Samsung\",\r\n            \"nom\": \"Galaxy S24\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/news",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetArticles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MTA0MjMzMDEsImV4cCI6MTcxMDQyNjkwMSwicm9sZXMiOlsiUk9MRV9BR0VOVCIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFtaW5lLm1lemdoaWNoQGdtYWlsLmNvbSIsImlkIjo0MSwibm9tIjoiTWV6Z2hpY2giLCJwcmVub20iOiJNb2hhbWVkIEFtaW5lIiwiZW1haWwiOiJhbWluZS5tZXpnaGljaEBnbWFpbC5jb20ifQ.peUfNZzytatXQcPIFnigJWu6AGdHhjLwLEfqlxX0utnzUnMZoyqX4GCGr6_A9ze-InRiXvjL6DB1bpeBm6qwBfZghzY8fZCXKi2Y8G1sUSJboxH_LMsV9pZk36sBXdezF2vvXDYlAYf_RcgjUvTT4DQ5aa3Iar4cdU1YCe11CE8clQrXI1NAYvWGjMqL6Xh_UE94pX108PpwteAzlJk497_0TM2RSZI1G2iWxRJHQa0pfxc0sjZSVCOntNUlm2Kn0glv_z7jXxK3Iooj7-yRERK1tvwcKL61C2q7lkbUCGs9j42-M64W_G9JFkgHVBhU3n65tM36D92f39kSrBlSag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/articles",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOneProvider",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/providers/1",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"providers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProvider",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/api/providers/1",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"api",
+						"providers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostPushNotification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"to\": \"ExponentPushToken[m5qVEjCBQesOX6Q4k97GW0]\",\r\n  \"title\":\"Nouvelle News\",\r\n  \"body\": \"This is a test notification\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://exp.host/--/api/v2/push/send",
+					"protocol": "https",
+					"host": [
+						"exp",
+						"host"
+					],
+					"path": [
+						"--",
+						"api",
+						"v2",
+						"push",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nom",
+							"value": "mezghich",
+							"type": "text"
+						},
+						{
+							"key": "prenom",
+							"value": "mohamed amine",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "amine.mezghich@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ams.smart-it-partner.com/register/mobile",
+					"protocol": "https",
+					"host": [
+						"ams",
+						"smart-it-partner",
+						"com"
+					],
+					"path": [
+						"register",
+						"mobile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Push_Notify",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

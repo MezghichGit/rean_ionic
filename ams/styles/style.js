@@ -52,5 +52,21 @@ const styles = StyleSheet.create({
       postExcerpt: {
         fontSize: 14,
       },
+      addButton: {
+        backgroundColor: '#07B0A8',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+        marginTop: 10, // Marge en haut
+        marginLeft: 200, // Marge à gauche
+        marginRight:10
+      },
+      addButtonText: {
+        color: 'white',
+        marginLeft: 10,
+      },
 })
 export default styles;

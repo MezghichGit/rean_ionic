@@ -5,9 +5,11 @@ import axios from "axios";
 import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 const HomeScreen = () => {
     const navigation=useNavigation();
     const [providers, setProviders] = useState([]);
+    
     const fetchProviders = async () => {
         const u = await asyncStorage.getItem("token");
         axios.defaults.headers['Authorization'] = 'Bearer ' + u;

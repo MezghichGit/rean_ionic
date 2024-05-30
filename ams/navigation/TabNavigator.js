@@ -87,9 +87,9 @@ export default function TabNavigator() {
                 },
             })}>
 
-            <tab.Screen name="Providers" component={HomeStack} options={{ title: 'Providers', headerRight: () => <LogoutButton /> }} />
-            <tab.Screen name="Articles" component={ArticleStack} options={{ title: 'Articles',headerRight: () => <LogoutButton /> }} />
-            <tab.Screen name="News" component={NewsScreen} options={{ title: 'News',headerRight: () => <LogoutButton /> }} />
+            <tab.Screen name="Providers" component={HomeStack} options={{ title: 'Providers' }} />
+            <tab.Screen name="Articles" component={ArticleStack} options={{ title: 'Articles' }} />
+            <tab.Screen name="News" component={NewsScreen} options={{ title: 'News'}} />
         </tab.Navigator>
 
     );

@@ -7,6 +7,7 @@ import NewsScreen from '../screens/NewsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AddProviderScreen from '../screens/AddProviderScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AddArticleScreen from '../screens/AddArticleScreen';
 
 const tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,23 @@ const HomeStack = () => (
 
 
 
+const ArticleStack = () => (
+    <Stack.Navigator>
+        <Stack.Screen name="ListeArticles" component={ArticleScreen} options={{ headerShown: false }} />
+        <Stack.Screen
+            name="AddArticle"
+            component={AddArticleScreen}
+            options={({ route }) => ({
+                title: route.params?.title,
+                headerStyle: {
+                    backgroundColor: '#DFF8F7',
+                }
+            })}
+        />
+    </Stack.Navigator>
+);
+
+
 export default function TabNavigator() {
     return (
         <tab.Navigator
@@ -50,7 +68,7 @@ export default function TabNavigator() {
             })}>
 
             <tab.Screen name="Providers" component={HomeStack} options={{ title: 'Providers' }} />
-            <tab.Screen name="Articles" component={ArticleScreen} options={{ title: 'ArticleS' }} />
+            <tab.Screen name="Articles" component={ArticleStack} options={{ title: 'Articles' }} />
             <tab.Screen name="News" component={NewsScreen} options={{ title: 'News' }} />
         </tab.Navigator>
 

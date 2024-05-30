@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Text, View, Image, FlatList,TouchableOpacity } from 'react-native'
+import { Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
 import styles from '../styles/style';
 import axios from "axios";
 import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
@@ -7,9 +7,9 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreen = () => {
-    const navigation=useNavigation();
+    const navigation = useNavigation();
     const [providers, setProviders] = useState([]);
-    
+
     const fetchProviders = async () => {
         const u = await asyncStorage.getItem("token");
         axios.defaults.headers['Authorization'] = 'Bearer ' + u;
@@ -35,6 +35,16 @@ const HomeScreen = () => {
         console.log('Ajouter un provider');
     };*/
     const addProvider = () => { navigation.navigate('AddProvider'); };
+
+    const deleteProvider = async (idprovider) => {
+        await axios.delete("https://ams.smart-it-partner.com/api/providers/" + idprovider)
+            .then(response => {
+                response.data;
+            })
+        navigation.navigate('ListProviders');
+    }
+
+
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.addButton} onPress={addProvider}>
@@ -56,6 +66,18 @@ const HomeScreen = () => {
                                 <Text style={styles.title}>{item.name}</Text>
                                 <Text style={styles.description}>{item.adress}</Text>
                                 <Text style={styles.description}>{item.email}</Text>
+                                <View style={styles.buttons}>
+                                    <TouchableOpacity
+                                        style={[styles.button, styles.view]}
+                                        onPress={() => deleteProvider(item.id)}
+                                    >
+                                        <Image
+                                            style={styles.icon}
+                                            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/6861/6861362.png' }}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+
                             </View>
                         </View>
                     )

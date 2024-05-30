@@ -128,7 +128,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
   },
-
-  
+  icon: {
+    width: 20,
+    height: 20,
+  },
 })
 export default styles;

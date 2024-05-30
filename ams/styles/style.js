@@ -99,5 +99,36 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 10,
   },
+  uploadButton: {
+    backgroundColor: 'white',
+    padding: 10,
+    marginLeft:0,
+    borderRadius: 15,
+    backgroundColor:'#e7e7e7',
+  },
+  cameraButton: {
+    backgroundColor: 'white',
+    padding: 10,
+    marginRight:50,
+    borderRadius: 15,
+    backgroundColor:'#e7e7e7',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 5, marginTop: 10,
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginLeft:10,
+    marginVertical: 10,
+    width:'80%'
+  },
+  imageCont: {
+    width: '100%',
+    height: 250,
+  },
+
+  
 })
 export default styles;

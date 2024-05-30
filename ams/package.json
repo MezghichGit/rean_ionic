@@ -17,6 +17,7 @@
     "axios": "^1.7.2",
     "core-js": "^3.37.1",
     "expo": "~51.0.9",
+    "expo-image-picker": "^15.0.5",
     "expo-status-bar": "~1.12.1",
     "ionicons": "^7.4.0",
     "jwt-decode": "^4.0.0",

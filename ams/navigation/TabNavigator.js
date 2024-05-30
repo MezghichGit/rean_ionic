@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native'
+import { StyleSheet,TouchableOpacity } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import ArticleScreen from '../screens/ArticleScreen';
@@ -8,7 +8,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AddProviderScreen from '../screens/AddProviderScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddArticleScreen from '../screens/AddArticleScreen';
-
+import authtoken from '../service/authtoken';
+import { useNavigation } from '@react-navigation/native'
 const tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,19 @@ const ArticleStack = () => (
 
 
 export default function TabNavigator() {
+
+    const navigation = useNavigation();
+    const logout = () => {
+        authtoken.logout();
+        navigation.navigate('Login');
+    };
+    const LogoutButton = () => (
+        <TouchableOpacity onPress={logout} style={{ marginRight: 10 }}>
+            <Ionicons name="log-out-outline" size={25} color="#000" />
+        </TouchableOpacity>
+    );
+
+
     return (
         <tab.Navigator
             screenOptions={({ route }) => ({
@@ -67,9 +81,9 @@ export default function TabNavigator() {
                 },
             })}>
 
-            <tab.Screen name="Providers" component={HomeStack} options={{ title: 'Providers' }} />
-            <tab.Screen name="Articles" component={ArticleStack} options={{ title: 'Articles' }} />
-            <tab.Screen name="News" component={NewsScreen} options={{ title: 'News' }} />
+            <tab.Screen name="Providers" component={HomeStack} options={{ title: 'Providers', headerRight: () => <LogoutButton /> }} />
+            <tab.Screen name="Articles" component={ArticleStack} options={{ title: 'Articles',headerRight: () => <LogoutButton /> }} />
+            <tab.Screen name="News" component={NewsScreen} options={{ title: 'News',headerRight: () => <LogoutButton /> }} />
         </tab.Navigator>
 
     );

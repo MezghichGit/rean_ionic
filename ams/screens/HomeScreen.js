@@ -66,7 +66,7 @@ const HomeScreen = () => {
                                 <Text style={styles.title}>{item.name}</Text>
                                 <Text style={styles.description}>{item.adress}</Text>
                                 <Text style={styles.description}>{item.email}</Text>
-                                <View style={styles.buttons}>
+                                <View style={styles.buttonDelete}>
                                     <TouchableOpacity
                                         style={[styles.button, styles.view]}
                                         onPress={() => deleteProvider(item.id)}

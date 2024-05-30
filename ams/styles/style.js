@@ -26,6 +26,17 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
+  buttonDelete: {
+    height: 35,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    width: 50,
+    marginRight: 5,
+    marginTop: 5,
+  }
+,
   buttonText: {
     color: '#fff',
     fontSize: 18,

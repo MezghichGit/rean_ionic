@@ -17,7 +17,7 @@ const ArticleScreen = () => {
 
     useFocusEffect(
         useCallback(() => {
-            const interval = setInterval(async () => { fetchArticles(); }, 1000);
+            const interval = setInterval(async () => { fetchArticles(); }, 100);
             return () => clearInterval(interval);
         }, [])
     );
@@ -34,6 +34,15 @@ const ArticleScreen = () => {
 
     }
     const addArticle = () => { navigation.navigate('AddArticle'); };
+
+    const  deleteArticle = async (idArticle) => {
+        await axios.delete("https://ams.smart-it-partner.com/api/articles/" + idArticle)
+            .then(response => {
+                response.data;
+            })
+       // navigation.navigate('ListProviders');
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.addButton} onPress={addArticle}>
@@ -51,6 +60,17 @@ const ArticleScreen = () => {
                             <View style={styles.boxContent}>
                                 <Text style={styles.title}>{item.name}</Text>
                                 <Text style={styles.description}>{item.prix}</Text>
+                                <View style={styles.buttonDelete}>
+                                    <TouchableOpacity
+                                        style={[styles.button, styles.view]}
+                                        onPress={() => deleteArticle(item.id)}
+                                    >
+                                        <Image
+                                            style={styles.icon}
+                                            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/6861/6861362.png' }}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
                     )

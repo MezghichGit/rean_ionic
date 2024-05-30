@@ -23,7 +23,7 @@ const AddProviderScreen = () => {
         }
         const result = await ImagePicker.launchImageLibraryAsync();
         if (!result.didCancel) {
-            setPickedImagePath(result.uri[0]);
+            setPickedImagePath(result.assets[0].uri);
         } else {
             console.log('Sélection d\'image annulée');
         }
@@ -40,7 +40,7 @@ const AddProviderScreen = () => {
         }
         const result = await ImagePicker.launchCameraAsync();
         if (!result.didCancel) {
-            setPickedImagePath(result.uri[0]);
+            setPickedImagePath(result.assets[0].uri);
         }
     }
 

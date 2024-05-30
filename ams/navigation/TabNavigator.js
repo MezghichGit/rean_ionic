@@ -9,7 +9,8 @@ import AddProviderScreen from '../screens/AddProviderScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddArticleScreen from '../screens/AddArticleScreen';
 import authtoken from '../service/authtoken';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
+import MapScreen  from '../screens/MapScreen';
 const tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -17,16 +18,21 @@ const Stack = createNativeStackNavigator();
 const HomeStack = () => (
     <Stack.Navigator>
         <Stack.Screen name="ListProviders" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen
-            name="AddProvider"
-            component={AddProviderScreen}
-            options={({ route }) => ({
+        <Stack.Screen name="AddProvider" component={AddProviderScreen} options={({ route }) => ({
                 title: route.params?.title,
                 headerStyle: {
                     backgroundColor: '#DFF8F7',
                 }
             })}
         />
+        <Stack.Screen name="Maps" component={MapScreen} options={({route}) => ({
+          title: route.params?.title,
+          headerStyle: {
+            backgroundColor: '#DFF8F7',
+          }
+        })}
+      />
+
     </Stack.Navigator>
 );
 

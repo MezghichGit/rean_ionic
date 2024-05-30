@@ -43,16 +43,25 @@ const AddProviderScreen = () => {
             setPickedImagePath(result.assets[0].uri);
         }
     }
+    const selectedImage = pickedImagePath;
 
     const addProvider = async () => {
-        const provider = {
-            name: name,
-            adress: adress,
-            email: email,
-        };
+        let localUri = selectedImage;
+        //const a = await asyncStorage.getItem("id");
+        let filename = localUri ? localUri.split('/').pop() : '';
+        let match = /\.(\w+)$/.exec(filename);
+        let imageType = match ? `image/${match[1]}` : `image`;
+        const formData = new FormData();
+        if (localUri) {
+            formData.append('image', { uri: localUri, name: filename, type: imageType });
+        }
+        formData.append('adress', adress);
+        formData.append('name', name);
+        formData.append('email', email);
+
         try {
-            const response = await axios.post("https://ams.smart-it-partner.com/api/providers", provider, {
-                headers: { 'Content-Type': 'application/ld+json' }
+            const response = await axios.post("https://ams.smart-it-partner.com/addprovider/mobile", formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
             });
             navigation.navigate('ListProviders');
         } catch (error) {

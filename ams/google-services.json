@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "811175509196",
-    "project_id": "plbams",
-    "storage_bucket": "plbams.appspot.com"
+    "project_number": "533798298880",
+    "project_id": "amsplb-8c978",
+    "storage_bucket": "amsplb-8c978.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:811175509196:android:c7d65a1aabfa2832b81669",
+        "mobilesdk_app_id": "1:533798298880:android:50055ee33feebb1df0bfe5",
         "android_client_info": {
           "package_name": "com.mezghich.amsplb"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDbu0D0urZiia39BixIb2DdI6htoehNQWU"
+          "current_key": "AIzaSyBn2Je2hLX-gieM_VuTOB8fFR6lJm4z94s"
         }
       ],
       "services": {

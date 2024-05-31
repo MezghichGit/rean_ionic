@@ -4,7 +4,7 @@ import { WebView } from 'react-native-webview';
 import { useRoute} from '@react-navigation/native';
 import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 import axios from "axios";
-import * as Permissions from 'expo-permissions';
+//import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 
 const MapScreen = () => {
@@ -42,7 +42,8 @@ const MapScreen = () => {
     }, []);
 
     const openGoogleMapsDirections = async (destinationLat, destinationLon) => {
-        const { status } = await Permissions.askAsync(Permissions.LOCATION);
+       // const { status } = await Permissions.askAsync(Permissions.LOCATION);
+       const { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
             console.error('Permission to access location was denied');
             return;

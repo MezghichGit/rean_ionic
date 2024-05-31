@@ -23,7 +23,6 @@
     "expo-image-picker": "^15.0.5",
     "expo-location": "^17.0.1",
     "expo-notifications": "~0.28.4",
-    "expo-permissions": "^14.4.0",
     "expo-status-bar": "~1.12.1",
     "ionicons": "^7.4.0",
     "jwt-decode": "^4.0.0",
